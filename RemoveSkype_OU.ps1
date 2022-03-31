@@ -58,7 +58,7 @@ foreach ($HostName in $HostList) {
         # This only worked for me from the C:\Users directory; anywhere else and the command would fail. Idk why?
         Set-Location -Path 'C:\Users'
 
-        $UserList = @(Get-ChildItem -Path C:\Users).Name
+        $UserList = @(Get-ChildItem -Path C:\Users | Where-Object -Property Name -ne 'Public').Name
 
         # HKU: is not a default PSDrive, so add it
         Write-Host "Create HKU PSDrive on $HostName"
